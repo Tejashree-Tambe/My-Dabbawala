@@ -1,0 +1,70 @@
+/* Background image */
+.login_background{
+    background-image: url("../images/login_background1.png");
+    overflow: auto;
+	background-repeat: no-repeat;
+	background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* Form starts */
+.login_container{
+    float: right;
+    padding: 100px;
+}
+
+/* Title */
+.login_container h1{
+    text-align: center;
+    font-size: 35px;
+}
+
+/* Form title */
+.login_container h1, label{
+    color: #000000;
+}
+
+/* Labels */
+.login_container label{
+    font-size: 25px;
+}
+
+/* Inputs */
+.login_container input{
+    height: 40px;
+    width:400px;
+    opacity: 0.5;
+    border-radius: 10px;
+    color: #270101;
+    font-size: 19px;
+}
+
+.login_container input::placeholder{
+    color: #270101;
+    font-size: 19px;
+    padding: 10px;
+}
+
+.login_container p{
+    font-size: 19px;
+    color: white;
+}
+
+.login_container p a{
+    color: white; 
+}
+
+/* Buttons */
+.login_container button{
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    position: absolute;
+    right: 250px;
+    font-size: larger;
+    background-color: #fa3131;
+    font-size: 20px;
+}
+
