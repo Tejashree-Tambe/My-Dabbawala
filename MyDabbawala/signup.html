@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
-    <link rel="stylesheet" type="text/css" href="CSS/login.css">
+    <link rel="stylesheet" type="text/css" href="CSS/signup.css">
 </head>
 
 <body>
@@ -31,20 +31,25 @@
         <img class="logo" src="Images/logo4.png">
     </div>
 
-    <div class="login_background">
-        <div class="login_container">
-            <h1>LOGIN</h1><br>
+    <div class="signup_background">
+   
+        <div class="signup_container">
+            <h1>SIGN UP</h1>
             <form method="POST">
-                <label>Username / Email</label><br>
-                <center><input type="text" placeholder="Enter your username" required></center><br><br>
+                <label>Username</label><br>
+                <center><input type="text" placeholder="Enter your username" required></center><br>
+                <label>Email</label><br>
+                <center><input type="text" placeholder="Enter your email" required></center><br>
+                <label>Mobile number</label><br>
+                <center><input type="text" placeholder="Enter your phone" required></center><br>
                 <label>Password</label><br>
                 <center><input type="password" placeholder="Enter password" required></center><br>
-                <center><p>Don't have an account? <a href="signup.html">Sign Up</a></p></center>
-                <center><button type="submit">Login</button></center>
+                <label>Confirm Password</label><br>
+                <center><input type="text" placeholder="Confirm Password" required></center>
+                <center><p>Already have an account? <a href="login.html">Login</a></p></center>
+                <center><button type="submit">Sign Up</button></center>
             </form>
         </div>
     </div>
-
 </body>
-
 </html>
