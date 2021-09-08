@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Join Us As Dabbawala</title>
     <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
     <link rel="stylesheet" type="text/css" href="CSS/signup.css">
     <link rel="stylesheet" type="text/css"
@@ -26,29 +26,29 @@
                     <a href="#packages">Packages</a>
                 </div>
             </div>
-            <a href="dabbawalajoin.html">Join as Dabbawala</a>
+            <a class="active" href="dabbawalajoin.html">Join as Dabbawala</a>
             <a href="#contactus">Contact Us</a>
-            <a class="active" href="login.html">Login</a>
+            <a href="login.html">Login</a>
         </div>
         <img class="logo" src="Images/logo4.png">
     </div>
 
-    <div class="signup_background">
+    <div class="signup_background" ;">
 
         <div class="signup_container">
-            <h1>SIGN UP</h1>
+            <h1>Join Us As Dabbawala</h1>
             <form method="POST">
-                <label>Username</label><br>
+                <label class="labels">Username</label><br>
                 <center><input type="text" placeholder="Enter your username" required></center><br>
-                <label>Email</label><br>
+                <label class="labels">Email</label><br>
                 <center><input type="text" placeholder="Enter your email" required></center><br>
-                <label>Mobile number</label><br>
+                <label class="labels">Mobile number</label><br>
                 <center><input type="text" placeholder="Enter your phone" required></center><br>
-                <label>Password</label><br>
+                <label class="labels">Password</label><br>
                 <center><input type="password" placeholder="Enter password" required></center><br>
-                <label>Confirm Password</label><br>
+                <label class="labels">Confirm Password</label><br>
                 <center><input type="text" placeholder="Confirm Password" required></center><br>
-                <label>Address Location</label><br>
+                <label>Usual Pickup Location</label><br>
                 <div class="drop_down">
                     <select>
                         <option>Borivali(E)</option>
@@ -57,7 +57,16 @@
                         <option>Kandivli(W)</option>
                         <option>Malad(E)</option>
                     </select>
-                </div><br><br><br>
+                </div><br><br><br><br><br>
+                <label style="margin-left: 420px;">Dabbawala Identity Card:</label>
+                <div class="file-input">
+                    <input type="file" id="file" class="file">
+                    <label for="file">
+                        Select File
+                        <p class="file-name"></p>
+                    </label>
+                </div>
+
                 <center>
                     <p>Already have an account? <a href="login.html">Login</a></p>
                 </center>
@@ -65,6 +74,21 @@
             </form>
         </div>
     </div>
+
+    <script>
+        const file = document.querySelector('#file');
+        file.addEventListener('change', (e) => {
+            // Get the selected file
+            const [file] = e.target.files;
+            // Get the file name and size
+            const { name: fileName, size } = file;
+            // Convert size in bytes to kilo bytes
+            const fileSize = (size / 1000).toFixed(2);
+            // Set the text content
+            const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+            document.querySelector('.file-name').textContent = fileNameAndSize;
+        });
+    </script>
 </body>
 
 </html>
