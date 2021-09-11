@@ -13,7 +13,7 @@
 <body>
     <div class="nav">
         <div class="topnav-right">
-            <a href="homepage.html">Home</a>
+            <a href="/homepage">Home</a>
             <a href="#about">About</a>
             <div class="dropdown">
                 <button class="dropbtn">Services
@@ -26,7 +26,7 @@
             </div>
             <a href="dabbawalajoin.html">Join as Dabbawala</a>
             <a href="#contactus">Contact Us</a>
-            <a class="active" href="login.html">Login</a>
+            <a class="active" href="/">Login</a>
         </div>
         <img class="logo" src="Images/logo4.png">
     </div>
@@ -34,11 +34,11 @@
     <div class="login_background">
         <div class="login_container">
             <h1>LOGIN</h1><br>
-            <form method="POST">
+            <form method="POST" action="/">
                 <label>Username / Email</label><br>
-                <center><input type="text" placeholder="Enter your username" required></center><br><br>
+                <center><input type="text" placeholder="Enter your username" required name="email"></center><br><br>
                 <label>Password</label><br>
-                <center><input type="password" placeholder="Enter password" required></center><br>
+                <center><input type="password" placeholder="Enter password" required name="password"></center><br>
                 <center>
                     <p>Don't have an account? <a href="/signup">Sign Up</a></p>
                 </center>
