@@ -1,39 +1,66 @@
+// Using express framework
 var express = require('express');
 var app = express();
+
+// For database
 const bodyParser = require('body-parser');
 const bcrypt = require("bcryptjs")
 require("./db/conn");
 const Register = require("./models/register");
-// For rendering css
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// For rendering static files like css, images and javascript
 app.use(express.static('static'))
 app.use('/css', express.static(__dirname + 'static/css'))
 app.use('/js', express.static(__dirname + 'static/js'))
 app.use('/images', express.static(__dirname + 'static/images'))
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
+// Get webpages
+// homepage page
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/views/login.html');
+    res.sendFile(__dirname + '/views/homepage.html');
 })
+
 app.get('/homepage', function (req, res) {
     res.sendFile(__dirname + '/views/homepage.html');
 })
+
+// login page
+app.get('/login', function (req, res) {
+    res.sendFile(__dirname + '/views/login.html');
+})
+
+// signup page
 app.get('/signup', function (req, res) {
     res.sendFile(__dirname + '/views/signup.html');
 })
+
+// joindabbawala page
+app.get('/dabbawalajoin', function (req, res) {
+    res.sendFile(__dirname + '/views/dabbawalajoin.html');
+})
+
+// For sending data from webpages
+
+// signup page
 app.post('/signup', async (req, res) => {
     try {
         console.log("post signup")
+        // Getting password fields input
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
+
+        // Checking if email entered is valid
         const emailToValidate = req.body.email;
         const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-        console.log(emailRegexp.test(emailToValidate));
-        console.log("got data")
+        const ifValidated = emailRegexp.test(emailToValidate);
+        console.log("Recieved data")
+
+        // If two passwords are correct and email is valid
         if (password === cpassword) {
-            console.log("password same")
             const registeruser = new Register({
                 username: req.body.username,
                 email: req.body.email,
@@ -42,41 +69,52 @@ app.post('/signup', async (req, res) => {
                 confirmpassword: cpassword
             })
 
+            // Saving user in db
             const registered = await registeruser.save();
-            console.log("user registered")
+            console.log("User registered")
             res.status(201).sendFile(__dirname + '/views/login.html');
 
+        }
 
-        }
         else {
-            console.log("password")
-            res.send("password doesnt matches");
+            res.send("Passwords don't match");
         }
-    } catch (error) {
+    }
+
+    catch (error) {
         res.status(400).send(error);
     }
 })
 
-
-app.post('/', async (req, res) => {
+// login page
+app.post('/login', async (req, res) => {
     try {
+        // Getting input fields
         const email = req.body.email;
         const password = req.body.password;
+
+        // Checking if credentials are correct
         const useremail = await Register.findOne({ email: email });
         const isMatch = bcrypt.compare(password, useremail.password);
 
+        // If correct
         if (isMatch) {
             res.status(201).sendFile(__dirname + '/views/homepage.html');
-
-        } else {
-            res.send("invalid details")
         }
-    } 
+
+        // If incorrect
+        else {
+            res.send("Invalid details")
+        }
+    }
+
     catch (error) {
         res.status(400).send(error);
 
     }
 })
+
+// letting app know to listen to port number 3000
 app.listen(3000, () => {
     console.log("server is working at http://localhost:3000/");
 })
