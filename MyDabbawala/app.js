@@ -61,6 +61,7 @@ app.post('/signup', async (req, res) => {
 
         // If two passwords are correct and email is valid
         if (password === cpassword) {
+            // Sending the data to Register model to save
             const registeruser = new Register({
                 username: req.body.username,
                 email: req.body.email,
@@ -73,7 +74,6 @@ app.post('/signup', async (req, res) => {
             const registered = await registeruser.save();
             console.log("User registered")
             res.status(201).sendFile(__dirname + '/views/login.html');
-
         }
 
         else {
