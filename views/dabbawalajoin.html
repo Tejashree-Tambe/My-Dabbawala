@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us As Dabbawala</title>
+    <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
+    <link rel="stylesheet" type="text/css" href="CSS/signup.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            function validateForm()
+ {
+     var username=document.getElementById("username");
+     var email=document.getElementById("email");
+     var mobile=document.getElementById("mobile");
+     var password=document.getElementById("password");
+     var confirmpassword=document.getElementById("confirmpassword");
+ 
+     if(username.value.trim()=="" && email.value.trim()=="" && mobile.value.trim()=="" && password.value.trim()=="" && confirmpassword.value.trim()=="")
+     {
+         alert("Error: No field should be empty");
+         return false;	
+     }
+     else
+     {
+         true;
+     }
+   
+ 
+ var password=document.getElementById("password").value;
+     var confirmpassword=document.getElementById("confirmpassword").value;
+     var username=document.getElementById("username").value;
+     var email=document.getElementById("email").value; 
+   
+     if(password!=confirmpassword){  
+
+ alert("Error: Password doesnot matches");  
+ return false;  
+     }
+     var username=document.getElementById("username").value;
+if(signup.username.value.length < 6) 
+{
+ alert("Error: Username must contain at least six characters!");
+ signup.username.focus();
+ return false;
+}  
+
+ 
+var email = document.getElementById('email');
+var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (!filter.test(email.value)) {
+alert('Please provide a valid email address');
+email.focus;
+return false;
+}
+var password=document.getElementById("password").value;
+if(signup.password.value.length < 6) {
+ alert("Error: Password must contain at least six characters!");
+ signup.password.focus();
+ return false;
+}  
+
+var y = document.signup.mobile.value;
+
+    if (y.length>10)
+    {
+         alert("Error: Enter 10 characters");
+         return false;
+    }
+ }
+ const file = document.querySelector('#file');
+ file.addEventListener('change', (e) => {
+     // Get the selected file
+     const [file] = e.target.files;
+     // Get the file name and size
+     const { name: fileName, size } = file;
+     // Convert size in bytes to kilo bytes
+     const fileSize = (size / 1000).toFixed(2);
+     // Set the text content
+     const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+     document.querySelector('.file-name').textContent = fileNameAndSize;
+ });
+</script>    
+</head>
+
+<body>
+    <div class="nav">
+        <div class="topnav-right">
+            <a class="active" href="/">Home</a>
+            <a href="#about">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">Services
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#otd">OTD</a>
+                    <a href="#packages">Packages</a>
+                </div>
+            </div>
+            <a href="/dabbawalajoin">Join as Dabbawala</a>
+            <a href="#contactus">Contact Us</a>
+            <a href="/login">Login</a>
+        </div>
+        <img class="logo" src="Images/logo4.png">
+    </div>
+
+    <div class="signup_background" ;">
+
+        <div class="signup_container">
+            <h1>Join Us As Dabbawala</h1>
+            <form action = "/dabbawalajoin" method="POST" id="signup" onsubmit="return validateForm()">
+                <label>Username</label><br>
+                <center><input type="text" placeholder="Enter your username" name="username" id="username"></center><br>
+                <label>Email</label><br>
+                <center><input type="text" placeholder="Enter your email"  name="email" id="email"></center><br>
+                <label>Mobile number</label><br>
+                <center><input type="text" placeholder="Enter your phone"  name="mobile" id="mobile"></center><br>
+                <label>Password</label><br>
+                <center><input type="password" placeholder="Enter password"  name="password" id="password"></center><br>
+                <label>Confirm Password</label><br>
+                <center><input type="password" placeholder="Confirm Password"  name = "confirmpassword" id="confirmpassword"></center><br>
+                <label>Usual Pickup Location</label><br>
+                <div class="drop_down">
+                    <select>
+                        <option>Borivali(E)</option>
+                        <option>Borivali(W)</option>
+                        <option>Kandivli(E)</option>
+                        <option>Kandivli(W)</option>
+                        <option>Malad(E)</option>
+                    </select>
+                </div><br><br><br><br><br>
+                <label style="margin-left: 420px;">Dabbawala Identity Card:</label>
+                <div class="file-input">
+                    <input type="file" id="file" class="file" name="img">
+                    <label for="file">
+                        Select File
+                        <p class="file-name"></p>
+                    </label>
+                </div>
+
+                <center>
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </center>
+                <center><button type="submit">Sign Up</button></center>
+            </form>
+        </div>
+    </div>
+
+   
+</body>
+
+</html>
