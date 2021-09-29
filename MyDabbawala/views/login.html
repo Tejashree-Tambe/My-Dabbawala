@@ -8,6 +8,7 @@
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
     <link rel="stylesheet" type="text/css" href="CSS/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -16,8 +17,8 @@
             <a href="/">Home</a>
             <a href="#about">About</a>
             <div class="dropdown">
-                <button class="dropbtn">Services
-                    <i class="fa fa-caret-down"></i>
+                <button class="dropbtn">Services 
+                  <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <a href="/otd">OTD</a>
@@ -34,14 +35,12 @@
     <div class="login_background">
         <div class="login_container">
             <h1>LOGIN</h1><br>
-            <form method="POST" action="/">
+            <form method="POST">
                 <label>Username / Email</label><br>
-                <center><input type="text" placeholder="Enter your username" required name="email"></center><br><br>
+                <center><input type="text" placeholder="Enter your username" required></center><br><br>
                 <label>Password</label><br>
-                <center><input type="password" placeholder="Enter password" required name="password"></center><br>
-                <center>
-                    <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-                </center>
+                <center><input type="password" placeholder="Enter password" required></center><br>
+                <center><p>Don't have an account? <a href="/signup">Sign Up</a></p></center>
                 <center><button type="submit">Login</button></center>
             </form>
         </div>

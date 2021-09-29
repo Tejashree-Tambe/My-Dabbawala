@@ -6,50 +6,6 @@
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
-  /* Header/logo Title */
-  .header {
-    padding: 80px;
-    text-align: center;
-    /*background: #1abc9c;*/
-    color: white;
-    background-image: url("../Images/db.jpg");
-    overflow: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 30%;
-  }
-  
-  /* Increase the font size of the heading */
-  .header h1 {
-    font-size: 40px;
-  }
-  
-  input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    margin-left: 587.5px;
-    width: 40%;
-    background: #f1f1f1;
-  }
-  
-  .btn {
-    float: right;
-    width: 10%;
-    padding: 10px;
-    background: #fa3131;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
-  }
-  
-  .btn:hover {
-    background: #fa3131;
-  }
 
   /* Column container */
   .row {  
@@ -58,31 +14,25 @@
     -ms-flex-wrap: wrap; /* IE10 */
     flex-wrap: wrap;
   }
-  
-  /* Create two unequal columns that sits next to each other */
-  /* Sidebar/left column */
-  .side {
-    -ms-flex: 20%; /* IE10 */
-    flex: 20%;
-    background-color: #f1f1f1;
-    padding: 20px;
-  }
-  
-  /* Main column */
-  .main {   
-    -ms-flex: 80%; /* IE10 */
-    flex: 80%;
-    background-color: white;
-    padding: 20px;
-  }
-  
+
   /* Fake image, just for this example */
   .fakeimg {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
     border-radius: 25px;
-    width: 100%;
+    width: 80%;
     padding: 20px;
+  }
+
+  .fakeimg2 {
+    background-color: white;
+    border-radius: 25px;
+    width: 80%;
+    padding: 20px;
+  }
+
+  p {
+    text-align:left;
   }
   
   .column2 {
@@ -91,7 +41,8 @@
   }
   
   .left2 {
-  width: 35%;
+  width: 50%;
+  margin-left: 30px;
   }
   
   .right2 {
@@ -123,48 +74,6 @@
     }
   }
 
-    .details_btn {
-    background : #fa3131;
-    border: 1px solid transparent;
-    color: #fff;
-    font-size: 16px;
-    padding: 10px 20px;
-    position: absolute;
-    right: 50px;
-    margin-top: 130px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    font-weight:bold;
-    transition: 0.3s ;
-    border-radius: 10px;
-}
-
-.details_btn span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.details_btn span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.details_btn:hover span {
-  padding-right: 25px;
-  opacity: 1.5;
-}
-
-.details_btn:hover span:after {
-  opacity: 1.5;
-  right: 0;
-}
-
 .button1 {
   border: none;
   border-radius: 10px;
@@ -186,6 +95,40 @@
   color: black;
   }
 
+  .btn-group button {
+    border: none;
+    border-radius: 10px;
+    outline: 0;
+    color: white;
+    background-color: #fa3131;
+    border: 1px solid #fa3131;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 10px 25px;
+    color: white; 
+    margin-right: 10px;
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+  }
+
+  #map { 
+    position: absolute; 
+    top: 230; 
+    margin-left: 230px;
+    width: 70%; 
+    height: 80%;
+  }
+
+  footer {
+    margin-top: 600px;
+    text-align: center;
+  }
   .copyright
 {
   overflow: hidden;
@@ -198,6 +141,7 @@
   letter-spacing: 1px;
   font-size: 0.90em;
   color: white;
+  text-align: center;
 }
 .copyright a
 {
