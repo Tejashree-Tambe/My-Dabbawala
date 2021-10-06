@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us As A Dabbawala</title>
+    <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
+    <link rel="stylesheet" type="text/css" href="CSS/signup.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <%- include('./navbar'); %>
+
+        <div class="signup_background">
+            <div class="signup_container">
+                <h1>Join Us As A Dabbawala</h1>
+                <form method="POST">
+                    <label class="labels">Username</label><br>
+                    <center><input type="text" placeholder="Enter your username" required></center><br>
+                    <label class="labels">Email</label><br>
+                    <center><input type="text" placeholder="Enter your email" required></center><br>
+                    <label class="labels">Mobile number</label><br>
+                    <center><input type="text" placeholder="Enter your phone" required></center><br>
+                    <label class="labels">Password</label><br>
+                    <center><input type="password" placeholder="Enter password" required></center><br>
+                    <label class="labels">Confirm Password</label><br>
+                    <center><input type="text" placeholder="Confirm Password" required></center><br>
+                    <br>
+                    <label style="margin-left: 540px;">Dabbawala ID Card:</label>
+                    <div class="file-input">
+                        <input type="file" id="file" class="file">
+                        <label for="file">
+                            Select File
+                            <p class="file-name"></p>
+                        </label>
+                    </div>
+                    <center>
+                        <p style="color: black">Already have an account? <a href="login.html"
+                                style="color: black">Login</a>
+                        </p>
+                    </center>
+                    <center><button type="submit">Sign Up</button></center>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            const file = document.querySelector('#file');
+            file.addEventListener('change', (e) => {
+                // Get the selected file
+                const [file] = e.target.files;
+                // Get the file name and size
+                const { name: fileName, size } = file;
+                // Convert size in bytes to kilo bytes
+                const fileSize = (size / 1000).toFixed(2);
+                // Set the text content
+                const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+                document.querySelector('.file-name').textContent = fileNameAndSize;
+            });
+        </script>
+</body>
+
+</html>

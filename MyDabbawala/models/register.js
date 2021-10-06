@@ -1,6 +1,6 @@
 // Creating a schema for signup(equivalent to making a table) with collection (table) name as register
-
 const mongoose = require("mongoose");
+
 const userSchema = new mongoose.Schema({
 
     username: {
@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
         unique: true,
-
     },
 
     password: {
@@ -30,8 +29,19 @@ const userSchema = new mongoose.Schema({
     confirmpassword: {
         type: String,
         required: true
+    },
+
+    user_location: {
+
+        type: [Number]
+        // formattedAddress: String
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-})
+});
 
 const Register = new mongoose.model("Register", userSchema);
 module.exports = Register;

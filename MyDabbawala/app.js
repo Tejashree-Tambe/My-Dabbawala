@@ -1,15 +1,37 @@
 // Using express framework
+const path = require('path');
 var express = require('express');
-var app = express();
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('./config/db');
+var session = require('express-session');
+
+// global vars
+var lat;
+var long;
+
+// load env vars
+dotenv.config({ path: './config/config.env' });
+
+// Connect to database
+connectDB();
+
+// use app to access app
+const app = express();
+
+// API For maps
+app.use(express.json({ limit: '1mb' }));
 
 // For database
 const bodyParser = require('body-parser');
-const bcrypt = require("bcryptjs")
-require("./db/conn");
-const Register = require("./models/register");
-
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// For session
+app.use(session({ secret: "ahusngefynuwtieuyewnf", resave: false, saveUninitialized: true }));
+
+// Set View's
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
 // For rendering static files like css, images and javascript
 app.use(express.static('static'))
@@ -17,104 +39,53 @@ app.use('/css', express.static(__dirname + 'static/css'))
 app.use('/js', express.static(__dirname + 'static/js'))
 app.use('/images', express.static(__dirname + 'static/images'))
 
-// Get webpages
-// homepage page
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/views/homepage.html');
-})
+// Getting all page routes
+var homepage = require('./routes/homepage')
+var dabbawalajoin = require('./routes/dabbawalajoin')
+var index = require('./routes/index')
+var login = require('./routes/login')
+var order_details_user = require('./routes/order_details_user')
+var otd = require('./routes/otd')
+var packages = require('./routes/packages')
+var user_dashboard = require('./routes/user_dashboard')
+var signup = require('./routes/signup')
+var api_location = require('./routes/api_location')
 
-app.get('/homepage', function (req, res) {
-    res.sendFile(__dirname + '/views/homepage.html');
-})
+//index.js
+app.use('/index', index);
+
+app.use('/api/location', api_location);
+
+// Rendering webpages
+// homepage page
+app.use('/', homepage);
+app.use('/homepage', homepage);
 
 // login page
-app.get('/login', function (req, res) {
-    res.sendFile(__dirname + '/views/login.html');
-})
+app.use('/login', login);
 
 // signup page
-app.get('/signup', function (req, res) {
-    res.sendFile(__dirname + '/views/signup.html');
-})
+app.use('/signup', signup);
 
 // joindabbawala page
-app.get('/dabbawalajoin', function (req, res) {
-    res.sendFile(__dirname + '/views/dabbawalajoin.html');
-})
+app.use('/dabbawalajoin', dabbawalajoin);
 
-// For sending data from webpages
+// userdashboard page
+app.use('/user_dashboard', user_dashboard);
 
-// signup page
-app.post('/signup', async (req, res) => {
-    try {
-        console.log("post signup")
-        // Getting password fields input
-        const password = req.body.password;
-        const cpassword = req.body.confirmpassword;
+// packages page
+app.use('/packages', packages);
 
-        // Checking if email entered is valid
-        const emailToValidate = req.body.email;
-        const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+// otd page
+app.use('/otd', otd);
 
-        const ifValidated = emailRegexp.test(emailToValidate);
-        console.log("Recieved data")
+// userdashboard page
+app.use('/order_details_user', order_details_user);
 
-        // If two passwords are correct and email is valid
-        if (password === cpassword) {
-            // Sending the data to Register model to save
-            const registeruser = new Register({
-                username: req.body.username,
-                email: req.body.email,
-                mobile: req.body.mobile,
-                password: password,
-                confirmpassword: cpassword
-            })
-
-            // Saving user in db
-            const registered = await registeruser.save();
-            console.log("User registered")
-            res.status(201).sendFile(__dirname + '/views/login.html');
-        }
-
-        else {
-            res.send("Passwords don't match");
-        }
-    }
-
-    catch (error) {
-        res.status(400).send(error);
-    }
-})
-
-// login page
-app.post('/login', async (req, res) => {
-    try {
-        // Getting input fields
-        const email = req.body.email;
-        const password = req.body.password;
-
-        // Checking if credentials are correct
-        const useremail = await Register.findOne({ email: email });
-        const isMatch = bcrypt.compare(password, useremail.password);
-
-        // If correct
-        if (isMatch) {
-            res.status(201).sendFile(__dirname + '/views/homepage.html');
-        }
-
-        // If incorrect
-        else {
-            res.send("Invalid details")
-        }
-    }
-
-    catch (error) {
-        res.status(400).send(error);
-
-    }
-})
 
 // letting app know to listen to port number 3000
 app.listen(3000, () => {
     console.log("server is working at http://localhost:3000/");
 })
+
+// module.exports = [lat, long]
