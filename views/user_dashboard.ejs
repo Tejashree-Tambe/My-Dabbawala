@@ -1,123 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>User Dashboard</title>
-        <link rel="stylesheet" href="CSS/user_dashboard.css">
-        <link rel="stylesheet" href="CSS/navbar.css">
-        <link href="https://fonts.googleapis.com/css2? family=Ubuntu+Mono&display=swap" rel="stylesheet">	
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="CSS/user_dashboard.css">
+    <link rel="stylesheet" href="CSS/navbar.css">
+
+    <script type="text/javascript" src="js/location.js"></script>
+    <script src="JS/user_dashboard.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2? family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
 <body>
     <div class="nav">
-        <div class="topnav-right">
-            <a href="/">Home</a>
-            <a href="#about">About</a>
-            <div class="dropdown">
-                <button class="dropbtn">Services 
-                  <i class="fa fa-caret-down"></i>
+        <div class="topnav-right" id="nav">
+          <a href="/homepage"  >Home</a>
+           
+           <div class="dropdown">
+                <button class="dropbtn">Services
+                    <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <a href="/otd">OTD</a>
                     <a href="/packages">Packages</a>
                 </div>
             </div>
-            <a href="/dabbawalajoin">Join as Dabbawala</a>
-            <a href="#contactus">Contact Us</a>
-            <a class="active" href="/login">Login</a>
-        </div>
-        <img class="logo" src="Images/logo4.png">
-    </div>
-
-    <div class="header">
-        <h1>Dashboard</h1>
-        <p>View Your Orders and Access The Features</p>
-    </div>
-
-    <div class="row">
-        <div class="side">
-            <h2>Your Profile</h2><br>
-            <p><strong>Username:</strong><%=data.username %></p>
-            <p><strong>Email:</strong> <%=data.email %></p>
-            <p><strong>Mobile Number:</strong><%=data.mobile%></p>
-            <p><strong>Password:</strong> <%=data.password %></p>
-            <p><strong>Location (Area):</strong> Kandivali (W)</p>
-            <!--<div class="fakeimg" style="height:200px;">Image</div>-->
-            <br>
-            <center><button class="button1">Edit</button></center>
-        </div>
-
-        <div class="main">
-            <br>
-            <input type="text" placeholder="Search..." name="search">
-            <button class="btn" type="submit"><i class="fa fa-search"></i></button><br><br><br>
-
-            <div class="fakeimg row2">
-                <div class="column2 left2">
-                    <h2>Delivery Order 1</h2>
-                    <p><strong>Placed On:</strong> 12th September, 2021</p>
-                    <p><strong>Service Type:</strong> One-Time Delivery</p>
-                    <p><strong>Expires On:</strong> 13th September, 2021</p>
-                </div>
-                <div class="column2 right2">
-                    <h2 style="color: white;">Delivery Order 1</h2>
-                    <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali (W)</p>
-                    <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali (W)</p>
-                </div>
-                <a href="/order_details_user"><button class="details_btn"><span>Show details</span></button></a>
-            </div>
-            <br>
-
-            <div class="fakeimg row2">
-                <div class="column2 left2">
-                    <h2>Delivery Order 2</h2>
-                    <p><strong>Placed On:</strong> 12th September, 2021</p>
-                    <p><strong>Service Type:</strong> Delivery Package</p>
-                    <p><strong>Expires On:</strong> 13th December, 2021</p>
-                </div>
-                <div class="column2 right2">
-                    <h2 style="color: white;">Delivery Order 1</h2>
-                    <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali (W)</p>
-                    <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali (W)</p>
-                </div>
-                <button class="details_btn"><span>Show details</span></button>
-            </div>
-            <br>
-
-            <div class="fakeimg row2">
-                <div class="column2 left2">
-                    <h2>Delivery Order 3</h2>
-                    <p><strong>Placed On:</strong> 12th September, 2021</p>
-                    <p><strong>Service Type:</strong> Delivery Package</p>
-                    <p><strong>Expires On:</strong> 13th December, 2021</p>
-                </div>
-                <div class="column2 right2">
-                    <h2 style="color: white;">Delivery Order 1</h2>
-                    <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali (W)</p>
-                    <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali (W)</p>
-                </div>
-                <button class="details_btn"><span>Show details</span></button>
-            </div>
-            <br>
+      
+                <a href="/dabbawalajoin">Join Us Dabbawala</a>
+                <a href="/login">Login</a>
+           
+                    <a href="/user_dashboard" class="active">Dashboard</a>
+                
         </div>
     </div>
 
-    <footer id="footer">
-        <div class="copyright">
-            <p>© All rights reserved | My Dabbawala</p>
-            <ul class="contact">
-                <li>
-                    <a href="#" class="fa fa-twitter"></a>
-                </li>
-                <li>
-                    <a href="#" class="fa fa-facebook"></a>
-                </li>
-                <li>
-                    <a href="#" class="fa fa-instagram"></a>
-                </li>
-            </ul>
+        <div class="header">
+            <h1>Dashboard</h1>
+            <p>View Your Orders and Access The Features</p>
         </div>
-    </footer>
+
+        <div class="row">
+            <div class="side">
+                <h2>Your Profile</h2><br>
+                <p><strong>Username:</strong>
+                   
+                </p>
+                <p><strong>Email:</strong>
+                  
+                </p>
+                <p><strong>Mobile Number:</strong>
+                  
+                </p>
+                <p><strong>Password:</strong> *******</p>
+                <br>
+                <center><button class="button1">Edit</button></center>
+            </div>
+
+            <div class="main">
+                <br>
+                <form id="searchbar" action="/search" method="POST">
+                <input type="text" id= "searchbar" placeholder="Search..." name="search">
+                <button class="btn" type="submit" id="search" ><i class="fa fa-search"></i></button><br><br><br>
+                </form>
+                <div class="fakeimg row2">
+              
+                    <div class="column2 left2">
+                        <h2>Delivery Order 1</h2>
+                        <p><strong>Placed On:</strong> allDate</p>
+                        <p id="service-type" name><strong>Service Type:</strong> One-Time Delivery</p>
+                        <p><strong>Expires On:</strong> 13th September, 2021</p>
+                    </div>
+           
+                    <div class="column2 right2">
+                        <h2 style="color: white;">Delivery Order 1</h2>
+                        <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
+                            (W)
+                        </p> 
+                        <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
+                            (W)
+                        </p>
+                    </div>
+                    <a href="/order_details_user"><button class="details_btn"><span>Show details</span></button></a>
+                </div>
+                <br>
+
+                <div class="fakeimg row2">
+                    <div class="column2 left2">
+                        <h2>Delivery Order 2</h2>
+                        <p><strong>Placed On:</strong> 12th September, 2021</p>
+                        <p id="service-type"><strong>Service Type:</strong> Delivery Package</p>
+                        <p><strong>Expires On:</strong> 13th December, 2021</p>
+                    </div>
+                    <div class="column2 right2">
+                        <h2 style="color: white;">Delivery Order 1</h2>
+                        <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
+                            (W)
+                        </p>
+                        <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
+                            (W)
+                        </p>
+                    </div>
+                    <button class="details_btn"><span>Show details</span></button>
+                </div>
+                <br>
+
+                <div class="fakeimg row2">
+                    <div class="column2 left2">
+                        <h2>Delivery Order 3</h2>
+                        <p><strong>Placed On:</strong> 12th September, 2021</p>
+                        <p id="service-type"><strong>Service Type:</strong> Delivery Package</p>
+                        <p><strong>Expires On:</strong> 13th December, 2021</p>
+                    </div>
+                    <div class="column2 right2">
+                        <h2 style="color: white;">Delivery Order 1</h2>
+                        <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
+                            (W)
+                        </p>
+                        <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
+                            (W)
+                        </p>
+                    </div>
+                    <button class="details_btn"><span>Show details</span></button>
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="copyright">
+                <p>© All rights reserved | My Dabbawala</p>
+                <ul class="contact">
+                    <li>
+                        <a href="#" class="fa fa-twitter"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-facebook"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-instagram"></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+   
 </body>
+
 </html>

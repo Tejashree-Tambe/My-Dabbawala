@@ -1,0 +1,32 @@
+<script>
+    const currentLocation = location.href
+const item = document.querySelectorAll('a')
+const menulength = item.length
+for (let i=0; i < menulength; i++)
+if(item[i].href == currentLocation){
+    item[i].className="active"
+}
+</script>
+
+<div class="nav">
+    <div class="topnav-right" id="nav">
+      <a href="/homepage"  >Home</a>
+       
+       <div class="dropdown">
+            <button class="dropbtn">Services
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/otd">OTD</a>
+                <a href="/packages">Packages</a>
+            </div>
+        </div>
+       
+            <a href="/user_dashboard">Dashboard</a>
+            
+                <a href="/dabbawalajoin">Join Us Dabbawala</a>
+                <a href="/login">Login</a>
+            
+            
+    </div>
+</div>

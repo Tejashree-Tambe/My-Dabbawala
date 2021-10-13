@@ -8,84 +8,59 @@
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
     <link rel="stylesheet" type="text/css" href="CSS/login.css">
-    <script>
-        
- function validateForm()
-        {
-            var username=document.getElementById("username");
-       
-            var password=document.getElementById("password");
-           
-            if(username.value.trim()=="" && password.value.trim()=="") {
-                
-                alert("Error: Username and Password should be entered");
-                return false;	
-            }
-            else
-            {
-                true;
-            }
-            
-        
-            if(username.value.trim()=="") 
-            {
-                alert("Error: Username should not be empty");
-                return false;	
-            }
-            else
-            {
-                true;
-            }
-           if(password.value.trim()==""){
-          
-            
-                alert("Error: Password should not be empty");
-                return false;	
-            }
-            else
-            {
-                true;
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/location.js"></script>
+    <script type="text/javascript" src="js/login_validations.js"></script>
+    <script type="text/javascript" src="js/navbar.js"></script>
+   
 </head>
 
 <body>
     <div class="nav">
-        <div class="topnav-right">
-            <a class="active" href="/">Home</a>
-            <a href="#about">About</a>
-            <div class="dropdown">
+        <div class="topnav-right" id="nav">
+          <a href="/homepage" >Home</a>
+           
+           <div class="dropdown">
+          
                 <button class="dropbtn">Services
                     <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-content">
-                    <a href="/otd">OTD</a>
+               
+                <div class="dropdown-content" >
+                    <a href="/otd" class="active" >OTD</a>
                     <a href="/packages">Packages</a>
                 </div>
             </div>
-            <a href="/dabbawalajoin">Join as Dabbawala</a>
-            <a href="#contactus">Contact Us</a>
-            <a href="/login">Login</a>
+       
+         
+                <a href="/dabbawalajoin">Join Us Dabbawala</a>
+                <a href="/login" class="active">Login</a>
+            
+                    <a href="/user_dashboard">Dashboard</a>
+              
         </div>
-        <img class="logo" src="Images/logo4.png">
     </div>
+  
+       
 
-    <div class="login_background">
-        <div class="login_container">
-            <h1>LOGIN</h1><br>
-            <form method="POST" action="/login" onsubmit="return validateForm()">
-                <label>Username / Email</label><br>
-                <center><input type="text" placeholder="Enter your username" id="username" name="username"></center><br><br>
-                <label>Password</label><br>
-                <center><input type="password" placeholder="Enter password" id="password" name="password"></center><br>
-                <center>
-                    <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-                </center>
-                <center><button type="submit">Login</button></center>
-            </form>
+        <input style="display: none;" type="text" id="latitude">
+        <input style="display: none;" type="text" id="longitude">
+
+        <div class="login_background">
+            <div class="login_container">
+                <h1>LOGIN</h1><br>
+                <form action="/login" method="POST" onsubmit="return validateForm()">
+                    <label> Email</label><br>
+                    <center><input type="text" placeholder="Enter your email" required name="email"></center><br><br>
+                    <label>Password</label><br>
+                    <center><input type="password" placeholder="Enter password" required name="password"></center><br>
+                    <center>
+                        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+                    </center>
+                    <center><button type="submit">Login</button></center>
+                </form>
+            </div>
         </div>
-    </div>
 
 </body>
 

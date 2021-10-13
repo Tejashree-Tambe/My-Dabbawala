@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 const packageSchema = new mongoose.Schema({
-    
+    date:{
+        type:Date,
+        default: Date.now
+
+    },
     name:{
         type:String,
         required: true,

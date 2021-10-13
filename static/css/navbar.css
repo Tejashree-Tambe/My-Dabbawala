@@ -17,7 +17,7 @@ body {
   display: inline-block;
 }
 
-.nav a:hover {
+.nav a:hover:not(.active){
   background-color: white;
   color: black;
 }
@@ -66,8 +66,16 @@ body {
   display: inline-block;
 }
 
+.dropdown:hover .dropbtn {
+  background-color: white;
+  color: black;
+}
 
-
+.dropdown .active .dropbtn{
+  background-color: #fa3131;
+  color: white;
+ 
+}
 .dropdown-content {
   display: none;
   position: absolute;
@@ -86,7 +94,9 @@ body {
   text-align: left;
 }
 
-
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
