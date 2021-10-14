@@ -67,6 +67,30 @@
     background-color: #f1f1f1;
     padding: 20px;
   }
+ 
+  .show{
+    display:block;
+ 
+  }
+  .tb .hide{
+   
+      display:none;
+    
+    
+  }
+  #textInput{
+    margin-left: 0px;
+    width: 180px;
+    height: 25px;
+   
+  }
+  #textInput1{
+    margin-left: 0px;
+    width: 180px;
+    height: 25px;
+   
+  }
+ 
   
   /* Main column */
   .main {   

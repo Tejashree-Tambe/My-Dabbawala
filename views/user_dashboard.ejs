@@ -13,6 +13,13 @@
     
     <link href="https://fonts.googleapis.com/css2? family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript">
+    function onButtonClick(){
+  document.getElementById('textInput1').className="show";
+  document.getElementById('textInput').className="show";
+}
+       
+    </script>
 </head>
 
 <body>
@@ -52,12 +59,21 @@
                 <p><strong>Email:</strong>
                   
                 </p>
-                <p><strong>Mobile Number:</strong>
-                  
-                </p>
-                <p><strong>Password:</strong> *******</p>
-                <br>
-                <center><button class="button1">Edit</button></center>
+              
+                <p><strong>Mobile Number:</strong>  </p>
+                <div class="tb">
+                <input class="hide" type="text" id="textInput1"  />
+                  </div>
+              
+          
+                
+                    <p><strong>Password:</strong> *******</p>
+                    <div class="tb">
+                        <input class="hide"  type="text" id="textInput"  />
+                    </div>
+                    <br>
+               
+                <center><button class="button1"  onclick="onButtonClick()">Edit</button></center>
             </div>
 
             <div class="main">
