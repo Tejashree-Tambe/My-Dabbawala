@@ -2,8 +2,11 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-usertype:{
+/*usertype:{
 required:true,
+type:String
+},*/
+user_id:{
 type:String
 },
     username: {

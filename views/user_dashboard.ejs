@@ -17,10 +17,14 @@
     function onButtonClick(){
   document.getElementById('textInput1').className="show";
   document.getElementById('textInput').className="show";
+  document.getElementById("btn").value="Update";
+    if (elem.value=="Update") elem.value = "Edit";
+    else elem.value = "Update";
 }
-       
+
     </script>
 </head>
+
 
 <body>
     <div class="nav">
@@ -38,9 +42,15 @@
             </div>
       
                 <a href="/dabbawalajoin">Join Us Dabbawala</a>
-                <a href="/login">Login</a>
-           
+                <% if (isAuthenticated) { %>
+                    <a href="/logout" class="active">Log out</a>
                     <a href="/user_dashboard" class="active">Dashboard</a>
+                    <%} else { %>
+                        <a href="/login">Login</a>
+           
+                    <% } %>
+              
+                 
                 
         </div>
     </div>
@@ -73,7 +83,7 @@
                     </div>
                     <br>
                
-                <center><button class="button1"  onclick="onButtonClick()">Edit</button></center>
+                <center><button class="button1" id="btn" value="Edit" onclick="onButtonClick()">Edit</button></center>
             </div>
 
             <div class="main">

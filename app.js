@@ -56,6 +56,8 @@ var user_dashboard = require('./routes/user_dashboard')
 var signup = require('./routes/signup')
 var api_location = require('./routes/api_location')
 var searchbar = require('./routes/search')
+var logout = require('./routes/logout')
+
 
 //index.js
 app.use('/index', index);
@@ -89,6 +91,8 @@ app.use('/otd', otd);
 app.use('/order_details_user', order_details_user);
 //search
 app.use('/search', searchbar);
+
+app.use('/logout', logout);
 
 
 // letting app know to listen to port number 3000

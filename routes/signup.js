@@ -2,11 +2,14 @@ const express = require('express');
 const router = express.Router();
 const location = require('./api_location')
 const nodemailer = require("nodemailer");
-
+var passport = require('passport')
+var LocalStrategy = require('passport-local').Strategy
 // For Database
 const Register = require("../models/register");
 
 router.get('/', (req, res) => {
+    console.log(req.user)
+    console.log(req.isAuthenticated())
     res.render('signup');
 });
 
@@ -71,6 +74,11 @@ router.post('/', async (req, res) => {
                         console.log("email send",info.response)
                     }
                 })
+                const user_id = results[0];
+                console.log(results[0])
+                req.login(user_id,function(err){
+                    res.render('/')
+                })
            /* const accountSid = 'AC3e2cec801ba3e61e59b3b8263d357964';
             const authToken = '5f6d0177583b7660b1460f328095b7b9';
             var client = require('twilio')(accountSid,authToken);
@@ -82,6 +90,8 @@ router.post('/', async (req, res) => {
             }).then((message) => console.log(message.sid))
             .catch((err) => console.log(err))*/
             res.status(201).render('login');
+            
+           
         }
 
         else {
@@ -94,5 +104,11 @@ router.post('/', async (req, res) => {
     }
 });
 
+passport.serializeUser(function(user_id,done){
+    done(null,user_id)
+})
+passport.deserializeUser(function(user_id,done){
+    done(null,user)
+})
 
 module.exports = router;

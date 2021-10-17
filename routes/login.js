@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const location = require('./api_location')
-
+var passport = require('passport')
+var LocalStrategy = require('passport-local').Strategy
 // For Database
 const Register = require("../models/register");
 const bcrypt = require("bcryptjs");
 
 router.get('/', (req, res) => {
+  
     res.render('login');
 });
 
@@ -32,6 +34,7 @@ router.post('/', (req, res) => {
           
                 console.log(req.session.user);
                 res.redirect('/user_dashboard');
+
             }
 
             else {
