@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="CSS/order_details_user.css">
+    <link rel="stylesheet" href="CSS/navbar.css">
+    <link href="https://fonts.googleapis.com/css2? family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+
+    <title>Order Details</title>
+
+</head>
+
+<body>
+    <%- include('./navbar'); %>
+
+        <center>
+            <h2 style="font-size:50px; color: black;">Order Details</h2>
+        </center>
+        <center>
+
+            <div class="fakeimg row2">
+                <div class="column2 left2">
+                    <p><strong>Placed On:</strong> 12th September, 2021</p>
+                    <p><strong>Service Type:</strong> Delivery Package</p>
+                    <p><strong>Package Duration:</strong> 3 Months</p>
+                    <p><strong>Expires On:</strong> 13th December, 2021</p>
+                </div>
+                <div class="column2 right2">
+                    <p>
+                        <strong>Payment:</strong> Rs. 1500
+                    </p>
+                    <p>
+                        <strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
+                        (W)
+                    </p>
+                    <p>
+                        <strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar,
+                        Kandivali (W)
+                    </p>
+                </div>
+                <div class="btn-group">
+                    <center><button>Edit Address</button>
+                        <button>Schedule a Holiday</button>
+                    </center>
+                </div>
+            </div>
+
+        </center>
+        <br><br>
+
+        <center>
+            <h2 style="font-size:30px; color:black; margin-left: 30px;">Live Location</h2>
+            <h4 id="address">Address: </h4>
+        </center>
+        <br><br>
+
+        <center>
+            <div id="map"></div>
+        </center>
+        <br><br>
+
+        <center>
+            <footer id="footer">
+                <div class="copyright">
+                    <p>© All rights reserved | My Dabbawala</p>
+                    <ul class="contact">
+                        <li>
+                            <a href="#" class="fa fa-twitter"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-facebook"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-instagram"></a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </center>
+
+        <script src="js/location.js"></script>
+        <!-- <script src="js/add_location_marker.js"></script> -->
+
+</body>
+
+</html>
