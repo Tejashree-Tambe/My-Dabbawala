@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
+var passport = require('passport')
 const location = require('./api_location')
 
 // For Database
 const Register = require("../models/register");
 const bcrypt = require("bcryptjs");
 
+var user_id;
+
 router.get('/', (req, res) => {
-    res.render('login');
+    res.render('login', { req: req });
 });
 
 router.post('/', (req, res) => {
@@ -22,14 +25,17 @@ router.post('/', (req, res) => {
                 return console.log(err);
             }
 
-            console.log(user.password);
             console.log('Retrived from database');
 
             const isMatch = bcrypt.compare(password, user.password)
             if (isMatch) {
-                req.session.user = user; //// It's Undefined
-                console.log(req.session.user);
-                res.redirect('/user_dashboard');
+                user_id = user._id;
+
+                req.login(user_id, function (err) {
+                    res.status(301).redirect('user_dashboard')
+                })
+
+                // res.redirect('/user_dashboard');
             }
 
             else {
@@ -37,26 +43,19 @@ router.post('/', (req, res) => {
             }
         });
     }
-    //     const isMatch = bcrypt.compare(password, useremail.password);
-
-    //     // If correct
-    //     if (isMatch) {
-    //         const user =  Register.findOne({ email: email, password: password });
-    //         req.session.user = user;
-    //         console.log(req.session.user);
-    //         res.redirect('user_dashboard', { "user": req.session.user });
-    //     }
-
-    //     // If incorrect
-    //     else {
-    //         res.send("Invalid details")
-    //     }
-    // }
 
     catch (error) {
         res.status(400).send(error);
 
     }
-})
+});
+
+passport.serializeUser(function (user_id, done) {
+    done(null, user_id);
+});
+
+passport.deserializeUser(function (user_id, done) {
+    done(null, user_id);
+});
 
 module.exports = router;

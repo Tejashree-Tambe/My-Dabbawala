@@ -1,7 +1,6 @@
 <div class="nav">
     <div class="topnav-right">
         <a href="/homepage">Home</a>
-        <a href="/about">About</a>
         <div class="dropdown">
             <button class="dropbtn">Services
                 <i class="fa fa-caret-down"></i>
@@ -11,9 +10,26 @@
                 <a href="/packages">Packages</a>
             </div>
         </div>
-        <a class="active" href="/dabbawalajoin">Join as Dabbawala</a>
-        <a href="#contactus">Contact Us</a>
-        <a href="/login">Login</a>
+
+        <% if (!req.loggedin) {%>
+            <a href='/login'>Login</a></li>
+            <a href='/dabbawalajoin'>Join As Dabbawala</a></li>
+            <% } else {%>
+                <a href='/logout'>Logout</a></li>
+                <a href='/user_dashboard'>Dashboard</a></li>
+                <% } %>
     </div>
+
     <img class="logo" src="Images/logo4.png">
+
+    <script>
+        const currentPage = location.href;
+        const menuItem = document.querySelectorAll('a');
+        const menuLength = menuItem.length;
+        for (let i = 0; i < menuLength; i++) {
+            if (menuItem[i].href === currentPage) {
+                menuItem[i].className = "active";
+            }
+        }
+    </script>
 </div>

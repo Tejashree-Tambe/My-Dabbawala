@@ -32,11 +32,22 @@
                     <%= user.email %>
                 </p>
                 <p><strong>Mobile Number:</strong>
-                    <%= user.email %>
+                    <%= user.mobile %>
                 </p>
-                <p><strong>Password:</strong> *******</p>
+
+                <div class="tb">
+                    <input class="hide" type="text" id="textInput1" />
+                </div>
+
+                <p><strong>Password:</strong>
+                    <%= user.password %>
+                </p>
+                <div class="tb">
+                    <input class="hide" type="text" id="textInput" />
+                </div>
                 <br>
-                <center><button class="button1">Edit</button></center>
+
+                <center><button class="button1" onclick="onButtonClick()">Edit</button></center>
             </div>
 
             <div class="main">
@@ -44,65 +55,35 @@
                 <input type="text" placeholder="Search..." name="search">
                 <button class="btn" type="submit"><i class="fa fa-search"></i></button><br><br><br>
 
-                <div class="fakeimg row2">
-                    <div class="column2 left2">
-                        <h2>Delivery Order 1</h2>
-                        <p><strong>Placed On:</strong> 12th September, 2021</p>
-                        <p><strong>Service Type:</strong> One-Time Delivery</p>
-                        <p><strong>Expires On:</strong> 13th September, 2021</p>
-                    </div>
-                    <div class="column2 right2">
-                        <h2 style="color: white;">Delivery Order 1</h2>
-                        <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
-                            (W)
-                        </p>
-                        <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
-                            (W)
-                        </p>
-                    </div>
-                    <a href="/order_details_user"><button class="details_btn"><span>Show details</span></button></a>
-                </div>
-                <br>
+                <% allOrders.forEach(delivery=> { %>
+                    <div class="fakeimg row2">
+                        <div class="column2 left2">
+                            <h2>Delivery Order 1</h2>
+                            <p><strong>Placed On:</strong>
+                                <%= delivery.placedOn %>
+                            </p>
+                            <p><strong>Service Type:</strong>
+                                <%= delivery.serviceType %>
+                            </p>
+                            <p><strong>Expires On:</strong>
+                                <%= delivery.expiresOn %>
+                            </p>
+                        </div>
+                        <div class="column2 right2">
+                            <h2 style="color: white;">Delivery Order 1</h2>
+                            <p><strong>Pick-Up Address:</strong>
+                                <%= delivery.pickup %>
+                            </p>
+                            <p><strong>Drop-Off Address:</strong>
+                                <%= delivery.dropoff %>
+                            </p>
+                        </div>
+                        <a href="/order_details_user"><button class="details_btn"><span>Show
+                                    details</span></button></a>
 
-                <div class="fakeimg row2">
-                    <div class="column2 left2">
-                        <h2>Delivery Order 2</h2>
-                        <p><strong>Placed On:</strong> 12th September, 2021</p>
-                        <p><strong>Service Type:</strong> Delivery Package</p>
-                        <p><strong>Expires On:</strong> 13th December, 2021</p>
                     </div>
-                    <div class="column2 right2">
-                        <h2 style="color: white;">Delivery Order 1</h2>
-                        <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
-                            (W)
-                        </p>
-                        <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
-                            (W)
-                        </p>
-                    </div>
-                    <button class="details_btn"><span>Show details</span></button>
-                </div>
-                <br>
-
-                <div class="fakeimg row2">
-                    <div class="column2 left2">
-                        <h2>Delivery Order 3</h2>
-                        <p><strong>Placed On:</strong> 12th September, 2021</p>
-                        <p><strong>Service Type:</strong> Delivery Package</p>
-                        <p><strong>Expires On:</strong> 13th December, 2021</p>
-                    </div>
-                    <div class="column2 right2">
-                        <h2 style="color: white;">Delivery Order 1</h2>
-                        <p><strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
-                            (W)
-                        </p>
-                        <p><strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
-                            (W)
-                        </p>
-                    </div>
-                    <button class="details_btn"><span>Show details</span></button>
-                </div>
-                <br>
+                    <br><br><br><br>
+                    <%})%>
             </div>
         </div>
 
@@ -122,6 +103,14 @@
                 </ul>
             </div>
         </footer>
+
+        <script type="text/javascript">
+            function onButtonClick() {
+                document.getElementById('textInput1').className = "show";
+                document.getElementById('textInput').className = "show";
+                document.getElementsByClassName('button1').value = "Update";
+            }
+        </script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ const location = require('./api_location')
 const Register = require("../models/register");
 
 router.get('/', (req, res) => {
-    res.render('signup');
+    res.render('signup', { req: req });
 });
 
 router.post('/', async (req, res) => {
@@ -15,12 +15,8 @@ router.post('/', async (req, res) => {
         // Getting password fields input
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
+        const usertype = 'Customer';
 
-        // Checking if email entered is valid
-        const emailToValidate = req.body.email;
-        const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
-        const ifValidated = emailRegexp.test(emailToValidate);
         console.log("Recieved data");
 
         // If two passwords are correct and email is valid
@@ -33,13 +29,14 @@ router.post('/', async (req, res) => {
                 mobile: req.body.mobile,
                 password: password,
                 confirmpassword: cpassword,
-                user_location: [lat, long]
+                userType: usertype,
+                user_location: [location.lat, location.long]
             })
 
             // Saving user in db
             const registered = await registeruser.save();
             console.log("User registered")
-            res.status(201).render('login');
+            res.status(201).render('login', { req: req });
         }
 
         else {

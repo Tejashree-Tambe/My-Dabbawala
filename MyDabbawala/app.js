@@ -1,10 +1,13 @@
-// Using express framework
+// Importing Modules
 const path = require('path');
 var express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var MongoDBStore = require('connect-mongodb-session')(session);
 
 // global vars
 var lat;
@@ -16,18 +19,16 @@ dotenv.config({ path: './config/config.env' });
 // Connect to database
 connectDB();
 
-// use app to access app
+// Creating app to access express framework
 const app = express();
 
 // API For maps
 app.use(express.json({ limit: '1mb' }));
 
-// For database
+// For bodyParser
 const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
-
-// For session
-app.use(session({ secret: "ahusngefynuwtieuyewnf", resave: false, saveUninitialized: true }));
 
 // Set View's
 app.set('views', './views');
@@ -38,6 +39,25 @@ app.use(express.static('static'))
 app.use('/css', express.static(__dirname + 'static/css'))
 app.use('/js', express.static(__dirname + 'static/js'))
 app.use('/images', express.static(__dirname + 'static/images'))
+app.use('/idCards', express.static(__dirname + 'static/idCards'))
+
+// For session
+var store = new MongoDBStore({
+    uri: process.env.MONGO_URI,
+    collection: 'mySessions'
+});
+
+app.use(session({
+    secret: "ahusngefynuwtieuyewnf",
+    resave: false,
+    store: store,
+    saveUninitialized: false,
+    // cookie: { secure: true }
+}));
+
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Getting all page routes
 var homepage = require('./routes/homepage')
@@ -50,9 +70,15 @@ var packages = require('./routes/packages')
 var user_dashboard = require('./routes/user_dashboard')
 var signup = require('./routes/signup')
 var api_location = require('./routes/api_location')
+var contact_us = require('./routes/contact_us')
+var logout = require('./routes/logout')
 
 //index.js
 app.use('/index', index);
+
+app.get('/test1', (req, res) => {
+    res.render('test')
+});
 
 app.use('/api/location', api_location);
 
@@ -81,6 +107,32 @@ app.use('/otd', otd);
 
 // userdashboard page
 app.use('/order_details_user', order_details_user);
+
+// logout page
+app.use('/logout', logout);
+
+// Contact Us
+app.use('/contact_us', contact_us);
+
+app.use(function (req, res, next) {
+    res.locals.isAuthenticated = req.
+        isAuthenticated();
+
+    // if (req.isAuthenticated()){
+    //     req.isLoggedIn = true;
+    // }
+    next();
+});
+
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
 
 
 // letting app know to listen to port number 3000

@@ -25,11 +25,11 @@
                         Everyday!
                     </h1>
                 </center>
-                <form>
+                <form action="/packages" method="post">
                     <div class="row">
                         <div class="inline-block right-margin">
                             <div class="label">Receipient Name <span id="recepient_name" class="info"></span></div>
-                            <input type="text" class="input-field" name="recepient-name" id="recepient-name"
+                            <input type="text" class="input-field" name="name" id="recepient-name"
                                 placeholder="Enter Receipient Name" required />
                         </div>
 
@@ -51,6 +51,18 @@
                             <div class="label">Drop-Off Point <span id="dropoff" class="info"></span></div>
                             <textarea name="dropoff" id="dropoff" class="input-field" cols="60" rows="6"
                                 placeholder="Enter Drop-Off Address" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="inline-block right-margin">
+                            <div class="label">Pick-Up Time <span id="picktime" class="info"></span></div>
+                            <input type="time" class="input-field" id="pick_time" name="pick_time" required>
+                        </div>
+
+                        <div class="inline-block responsive">
+                            <div class="label">Drop-Off Time <span id="droptime" class="info"></span></div>
+                            <input type="time" class="input-field" id="drop_time" name="drop_time" required>
                         </div>
                     </div>
 

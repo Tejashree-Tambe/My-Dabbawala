@@ -22,34 +22,41 @@
 
         <div class="bg-img">
             <div class="form-container2">
-                <center><h1 class="l-header h1 ship" style="font-size: 40px; color: white">Get Your Dabba Delivered Today!</h1></center>
-                <form>
+                <center>
+                    <h1 class="l-header h1 ship" style="font-size: 40px; color: white">Get Your Dabba Delivered Today!
+                    </h1>
+                </center>
+                <form action="/otd" method="post">
                     <div class="row">
                         <div class="inline-block right-margin">
                             <div class="label">Receipient Name <span class="info"></span></div>
-                            <input type="text" class="input-field" name="recepient-name" id="recepient-name" placeholder="Enter Receipient Name" required/>
+                            <input type="text" class="input-field" name="name" id="name"
+                                placeholder="Enter Receipient Name" required />
                         </div>
-    
+
                         <div class="inline-block responsive">
                             <div class="label">Receipient Phone No. <span class="info"></span></div>
-                            <input type="tel" class="input-field" name="phone" id="phone" placeholder="Enter Receipient Phone No." pattern="[0-9]{10}" required/>
+                            <input type="tel" class="input-field" name="phone" id="phone"
+                                placeholder="Enter Receipient Phone No." pattern="[0-9]{10}" required />
                         </div>
                     </div>
-    
+
                     <div class="row">
                         <div class="inline-block right-margin">
                             <div class="label">Pick-Up Address <span class="info"></span></div>
-                            <textarea name="pickup" id="pickup" class="input-field" cols="60" rows="6" placeholder="Enter Pick-Up Address" required></textarea>
+                            <textarea name="pickup" id="pickup" class="input-field" cols="60" rows="6"
+                                placeholder="Enter Pick-Up Address" required></textarea>
                         </div>
-                        
+
                         <div class="inline-block responsive">
                             <div class="label">Drop-Off Point <span class="info"></span></div>
-                            <textarea name="dropoff" id="dropoff" class="input-field" cols="60" rows="6" placeholder="Enter Drop-Off Address" required></textarea>
+                            <textarea name="dropoff" id="dropoff" class="input-field" cols="60" rows="6"
+                                placeholder="Enter Drop-Off Address" required></textarea>
                         </div>
                     </div>
-    
+
                     <center>
-                        <input type="button" name="submit" id="toggle-button" class="btn" value="Submit" />
+                        <input type="submit" name="submit" id="toggle-button" class="btn" value="Submit" />
                     </center>
                 </form>
             </div>
@@ -82,21 +89,23 @@
             </div>
         </div>
 
-        <center><div class="target" style="background-color: rgb(167, 167, 167, 0.4);">
-            <br>
-            <h2 class="l-header h1 ship">Nearest Dabbawalas</h2>
-            <button id="rzp-button1" class="details_btn"><span>Dabbawala Name <br><br>
-                Distance: 256m
-            </span></button>
-            <br><br><br>
-    
-            <button id="rzp-button1" class="details_btn"><span>Dabbawala Name <br><br>
-                Distance: 256m
-            </span></button>
-            <br><br><br>
-            
-            <br>
-        </div></center>
+        <center>
+            <div class="target" style="background-color: rgb(167, 167, 167, 0.4);">
+                <br>
+                <h2 class="l-header h1 ship">Nearest Dabbawalas</h2>
+                <button id="rzp-button1" class="details_btn"><span>Rhutuja <br><br>
+                        Distance: m
+                    </span></button>
+                <br><br><br>
+
+                <!-- <button id="rzp-button1" class="details_btn"><span>Dabbawala Name <br><br>
+                        Distance: 256m
+                    </span></button> -->
+                <br><br><br>
+
+                <br>
+            </div>
+        </center>
 
         <div id="how-it-works" class="l-section wf-section">
             <div class="l-container">
@@ -138,65 +147,66 @@
         <!-- Razor Pay-->
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
-        var options = {
-            "key": "rzp_test_efrPdinX44khOe", // Enter the Key ID generated from the Dashboard
-            "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            "currency": "INR",
-            "name": "My Dabbawala",
-            "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
-            //"order_id": "order_Ef80WJDPBmAeNt", //Pass the `id` obtained in the previous step
-            //"account_id": "acc_Ef7ArAsdU5t0XL",
-            "handler": function (response){
-                alert(response.razorpay_payment_id);
-                //alert(response.razorpay_order_id);
-                //alert(response.razorpay_signature)
-                window.open('user_dashboard.html',"_self");
+            document.getElementById('name').textContent = 'Tejashree Tambe';
+            document.getElementById('phone').textContent = '3456789123';
+            document.getElementById('pickup').textContent = '34-35 Soujaya Society Vidya Niketan Marg, Lokmanya Tilak Nagar, Goregaon West, Mumbai 400062, India';
+
+            var options = {
+                "key": "rzp_test_efrPdinX44khOe", // Enter the Key ID generated from the Dashboard
+                "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "My Dabbawala",
+                "description": "Test Transaction",
+                "image": "https://example.com/your_logo",
+                //"order_id": "order_Ef80WJDPBmAeNt", 
+                //Pass the `id` obtained in the previous step
+                //"account_id": "acc_Ef7ArAsdU5t0XL",
+                "handler": function (response) {
+                    alert("Payment Succesfull\nYour Dabba will be delivered shortly\n" + response.razorpay_payment_id);
+                    //alert(response.razorpay_order_id);
+                    //alert(response.razorpay_signature)
+                    window.open('/user_dashboard', "_self");
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            document.getElementById('rzp-button1').onclick = function (e) {
+                rzp1.open();
+                e.preventDefault();
             }
-        };
-        var rzp1 = new Razorpay(options);
-        document.getElementById('rzp-button1').onclick = function(e){
-            rzp1.open();
-            e.preventDefault();
-        }
 
-        //hide and show new division
-        var rname = document.getElementById("recepient-name");
-        var phone = document.getElementById("phone");
-        var pickup = document.getElementById("pickup");
-        var dropoff = document.getElementById("dropoff");
+            //hide and show new division
+            var rname = document.getElementById("name");
+            var phone = document.getElementById("phone");
+            var pickup = document.getElementById("pickup");
+            var dropoff = document.getElementById("dropoff");
+            document.getElementById('toggle-button').addEventListener('click', function () {
+                toggle(document.querySelectorAll('.target'));
+            });
 
-        document.getElementById('toggle-button').addEventListener('click', function () {
-        toggle(document.querySelectorAll('.target'));
-        });
-
-        function toggle (elements, specifiedDisplay) {
-            var element, index;
-
-            if (rname.value.trim() == "" || phone.value.trim() == "" || pickup.value.trim() == "" || dropoff.value.trim() == "") {
-                alert("Error: No field should be empty");
-            }
-            else
-            {
-                elements = elements.length ? elements : [elements];
-                for (index = 0; index < elements.length; index++) {
-                    element = elements[index];
-
-                    if (isElementHidden(element)) {
-                    element.style.display = '';
-
-                    // If the element is still hidden after removing the inline display
-                    if (isElementHidden(element)) {
-                        element.style.display = specifiedDisplay || 'block';
+            function toggle(elements, specifiedDisplay) {
+                var element, index;
+                if (rname.value.trim() == "" || phone.value.trim() == "" || pickup.value.trim() == "" || dropoff.value.trim() == "") {
+                    alert("Error: No field should be empty");
+                }
+                else {
+                    elements = elements.length ? elements : [elements];
+                    for (index = 0; index < elements.length; index++) {
+                        element = elements[index];
+                        if (isElementHidden(element)) {
+                            element.style.display = '';
+                            // If the element is still hidden after removing the inline display
+                            if (isElementHidden(element)) {
+                                element.style.display = specifiedDisplay || 'block';
+                            }
+                        }
                     }
+                    function isElementHidden(element) {
+                        return window.getComputedStyle(element, null).getPropertyValue('display') === 'none';
                     }
                 }
-                function isElementHidden (element) {
-                    return window.getComputedStyle(element, null).getPropertyValue('display') === 'none';
-                }
             }
-        }
         </script>
 
 </body>
-</html>
+
+</html
