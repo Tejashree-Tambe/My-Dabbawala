@@ -157,12 +157,12 @@
                 "currency": "INR",
                 "name": "My Dabbawala",
                 "description": "Test Transaction",
-                "image": "https://example.com/your_logo",
+                "image": "Images/logo4.png",
                 //"order_id": "order_Ef80WJDPBmAeNt", 
                 //Pass the `id` obtained in the previous step
                 //"account_id": "acc_Ef7ArAsdU5t0XL",
                 "handler": function (response) {
-                    alert("Payment Succesfull\nYour Dabba will be delivered shortly\n" + response.razorpay_payment_id);
+                    alert("Payment Succesfull!\nYour Dabba will be delivered shortly.\n" + response.razorpay_payment_id);
                     //alert(response.razorpay_order_id);
                     //alert(response.razorpay_signature)
                     window.open('/user_dashboard', "_self");
@@ -179,6 +179,7 @@
             var phone = document.getElementById("phone");
             var pickup = document.getElementById("pickup");
             var dropoff = document.getElementById("dropoff");
+            
             document.getElementById('toggle-button').addEventListener('click', function () {
                 toggle(document.querySelectorAll('.target'));
             });
