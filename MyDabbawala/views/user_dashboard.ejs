@@ -52,13 +52,17 @@
 
             <div class="main">
                 <br>
-                <input type="text" placeholder="Search..." name="search">
-                <button class="btn" type="submit"><i class="fa fa-search"></i></button><br><br><br>
+                <form id="searchbar" action="/search" method="POST">
+                    <input type="text" id= "searchbar" placeholder="Search..." name="search">
+                    <button class="btn" type="submit" id="search" ><i class="fa fa-search"></i></button><br><br><br>
+                </form>
 
                 <% allOrders.forEach(delivery=> { %>
                     <div class="fakeimg row2">
                         <div class="column2 left2">
-                            <h2>Delivery Order</h2>
+                            <h2>
+                                <%= delivery.name %>
+                            </h2>
                             <p><strong>Placed On:</strong>
                                 <%= delivery.placedOn %>
                             </p>

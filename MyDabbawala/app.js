@@ -71,6 +71,7 @@ var signup = require('./routes/signup')
 var api_location = require('./routes/api_location')
 var contact_us = require('./routes/contact_us')
 var logout = require('./routes/logout')
+var searchbar = require('./routes/search')
 
 //index.js
 app.use('/index', index);
@@ -112,6 +113,9 @@ app.use('/logout', logout);
 
 // Contact Us
 app.use('/contact_us', contact_us);
+
+//search
+app.use('/search', searchbar);
 
 app.use(function (req, res, next) {
     res.locals.isAuthenticated = req.
