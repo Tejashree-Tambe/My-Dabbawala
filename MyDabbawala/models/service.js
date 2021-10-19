@@ -52,6 +52,14 @@ const deliverySchema = new mongoose.Schema({
     user_id: {
         type: String,
         required: true
+    },
+
+    payment_status: {
+        type: String
+    },
+
+    dabbawala_name: {
+        type: String
     }
 
 })

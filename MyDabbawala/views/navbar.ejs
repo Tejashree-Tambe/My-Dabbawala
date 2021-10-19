@@ -1,6 +1,7 @@
 <div class="nav">
-    <div class="topnav-right">
+    <div class="topnav-right" id="nav">
         <a href="/homepage">Home</a>
+
         <div class="dropdown">
             <button class="dropbtn">Services
                 <i class="fa fa-caret-down"></i>
@@ -11,13 +12,22 @@
             </div>
         </div>
 
-        <% if (!req.loggedin) {%>
-            <a href='/login'>Login</a></li>
-            <a href='/dabbawalajoin'>Join As Dabbawala</a></li>
-            <% } else {%>
-                <a href='/logout'>Logout</a></li>
-                <a href='/user_dashboard'>Dashboard</a></li>
-                <% } %>
+        <a href="/user_dashboard">Dashboard</a>
+        <div class="dropdown">
+
+            <button class="dropbtn">Login
+                <i class="fa fa-caret-down"></i>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="/login">Login</a>
+                <a href="/dabbawalajoin">Join As Dabbawala</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
+
+
     </div>
 
     <img class="logo" src="Images/logo4.png">

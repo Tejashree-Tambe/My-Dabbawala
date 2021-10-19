@@ -58,7 +58,7 @@
                 <% allOrders.forEach(delivery=> { %>
                     <div class="fakeimg row2">
                         <div class="column2 left2">
-                            <h2>Delivery Order 1</h2>
+                            <h2>Delivery Order</h2>
                             <p><strong>Placed On:</strong>
                                 <%= delivery.placedOn %>
                             </p>
@@ -69,17 +69,29 @@
                                 <%= delivery.expiresOn %>
                             </p>
                         </div>
-                        <div class="column2 right2">
-                            <h2 style="color: white;">Delivery Order 1</h2>
-                            <p><strong>Pick-Up Address:</strong>
-                                <%= delivery.pickup %>
-                            </p>
-                            <p><strong>Drop-Off Address:</strong>
-                                <%= delivery.dropoff %>
-                            </p>
+
+                        <div>
+                            <div class="column2 right2">
+                                <h2 style="color: white;">
+                                    Delivery Order
+                                </h2>
+
+                                <input type="hidden" value="<%=delivery._id %>" name="order_id">
+
+                                <p>
+                                    <strong>Pick-Up Address:</strong>
+                                    <%= delivery.pickup %>
+                                </p>
+                                <p><strong>Drop-Off Address:</strong>
+                                    <%= delivery.dropoff %>
+                                </p>
+                            </div>
+                            <form method="post" action="/order_details_user">
+                                <button name="order" type="submit" class="details_btn" value=<%=delivery._id %>>
+                                    <span>Show details</span>
+                                </button>
+                            </form>
                         </div>
-                        <a href="/order_details_user"><button class="details_btn"><span>Show
-                                    details</span></button></a>
 
                     </div>
                     <br><br><br><br>

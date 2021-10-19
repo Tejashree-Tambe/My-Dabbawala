@@ -9,21 +9,23 @@ const Service = require("../models/service");
 const Register = require("../models/register");
 
 router.get('/', protect(), (req, res) => {
-    console.log(req.user);
-    console.log(req.isAuthenticated());
-
     Register.findOne({ _id: req.user }, (err, logged_user) => {
         if (err) {
             return console.log(err);
         }
 
-        Service.find({}, (err, Services) => {
+        Service.find({ user_id: req.user }, (err, Services) => {
             if (err) {
                 return console.log(err);
             }
 
-            res.render('user_dashboard', { allOrders: Services, user: logged_user, req: req });
+            Register.find({ userType: "Dabbawala" }, (err, allDabbawalas) => {
+                if (err) {
+                    return console.log(err);
+                }
 
+                res.render('user_dashboard', { allOrders: Services, user: logged_user, req: req });
+            });
         });
 
     });

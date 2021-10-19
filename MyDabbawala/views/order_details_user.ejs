@@ -28,27 +28,37 @@
 
             <div class="fakeimg row2">
                 <div class="column2 left2">
-                    <p><strong>Placed On:</strong> 12th September, 2021</p>
-                    <p><strong>Service Type:</strong> Delivery Package</p>
-                    <p><strong>Package Duration:</strong> 3 Months</p>
-                    <p><strong>Expires On:</strong> 13th December, 2021</p>
+                    <p><strong>Placed On:</strong>
+                        <%= order.placedOn %>
+                    </p>
+                    <p><strong>Service Type:</strong>
+                        <%= order.serviceType %>
+                    </p>
+                    <p><strong>Expires On:</strong>
+                        <%= order.expiresOn %>
+                    </p>
+
+                    <p><strong>Dabbawala Name:</strong>
+                        <%= order.dabbawala_name %>
+                    </p>
                 </div>
+
                 <div class="column2 right2">
                     <p>
-                        <strong>Payment:</strong> Rs. 1500
+                        <strong>Payment:</strong> Rs. 1500 <%= order.payment_status %>
                     </p>
                     <p>
-                        <strong>Pick-Up Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar, Kandivali
-                        (W)
+                        <strong>Pick-Up Address:</strong>
+                        <%= order.pickup %>
                     </p>
                     <p>
-                        <strong>Drop-Off Address:</strong> Sadhana Building, Vasant Complex, Mahavir Nagar,
-                        Kandivali (W)
+                        <strong>Drop-Off Address:</strong>
+                        <%= order.dropoff %>
                     </p>
+                    <br><br>
                 </div>
                 <div class="btn-group">
                     <center><button>Edit Address</button>
-                        <button>Schedule a Holiday</button>
                     </center>
                 </div>
             </div>

@@ -10,6 +10,7 @@ body, html {
   .bg-img {
     background-image: url("../Images/packages3.cms");
     min-height: 93%;
+    height: 700px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -394,4 +395,7 @@ p {
   /*color: #fa3131;*/
 }
 
-.target { display: none; }
+.target { 
+    display: none;
+    background-image: none; 
+}

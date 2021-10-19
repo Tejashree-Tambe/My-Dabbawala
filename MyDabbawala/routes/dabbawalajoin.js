@@ -1,6 +1,7 @@
 const express = require('express');
 const cloudinary = require('../utils/cloudinary');
 const upload = require('../utils/multer');
+const nodemailer = require("nodemailer");
 const location = require('./api_location');
 const router = express.Router();
 
@@ -40,6 +41,37 @@ router.post('/', upload.single('idCard'), async (req, res) => {
             const registered = await registeruser.save();
             console.log("User registered")
             res.render('login', { req: req });
+
+            // To send mail
+            const transporter = nodemailer.createTransport({
+                // Setting Host
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false,
+
+                // Giving Credentials for from email
+                auth: {
+                    user: "clinicareweb27@gmail.com",
+                    pass: "CliniCare27",
+                },
+            });
+
+            console.log("Email will be sent shortly")
+            const msg = {
+                from: 'clinicareweb27@gmail.com', // sender address
+                to: req.body.email, // list of receivers
+                subject: "You have Registered on My Dabbawala", // Subject line
+                text: "Hello Customer, \nThank You for registering as Dabbawala on My Dabbawala. \nThis is an automated email\n\nRegards, \nMy Dabbawala Team", // plain text body
+            }
+
+            transporter.sendMail(msg, (err, info) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log("Email sent", info.response)
+                }
+            })
         }
 
         else {

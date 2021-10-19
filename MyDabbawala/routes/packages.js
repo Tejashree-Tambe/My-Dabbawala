@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+// Module imports
+const protect = require('../middleware/protect');
+
 // For Database
 const Service = require("../models/service");
 const Register = require("../models/register");
 
-router.get('/', function (req, res) {
+router.get('/', protect(), function (req, res) {
     res.render('packages', { req: req });
 });
 

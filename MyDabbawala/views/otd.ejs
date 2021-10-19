@@ -16,17 +16,15 @@
 
 <body>
     <%- include('./navbar'); %>
+        <form action="/otd" method="post">
+            <div class="bg-img">
+                <div class="form-container2">
+                    <center>
+                        <h1 class="l-header h1 ship" style="font-size: 40px; color: white">Get Your Dabba Delivered
+                            Today!
+                        </h1>
+                    </center>
 
-        <input style="display: none;" type="text" id="latitude">
-        <input style="display: none;" type="text" id="longitude">
-
-        <div class="bg-img">
-            <div class="form-container2">
-                <center>
-                    <h1 class="l-header h1 ship" style="font-size: 40px; color: white">Get Your Dabba Delivered Today!
-                    </h1>
-                </center>
-                <form action="/otd" method="post">
                     <div class="row">
                         <div class="inline-block right-margin">
                             <div class="label">Receipient Name <span class="info"></span></div>
@@ -56,11 +54,31 @@
                     </div>
 
                     <center>
-                        <input type="submit" name="submit" id="toggle-button" class="btn" value="Submit" />
+                        <input name="submit" id="rzp-button1" class="btn" value="Pay" />
                     </center>
-                </form>
+                </div>
             </div>
-        </div>
+
+            <center>
+                <div class="target" style="background-color: rgb(167, 167, 167, 0.4);">
+                    <br>
+                    <h2 class="l-header h1 ship">Nearest Dabbawalas</h2>
+                    <% dabbawalas.forEach(dabbawala=> { %>
+                        <button type="submit" name="dabbawala_name" value=<%=dabbawala.username %> id="rzp-button1"
+                            class="details_btn"><span>
+                                <%= dabbawala.username %><br><br>
+                                    Distance: m
+                            </span></button>
+                        <br><br><br>
+                        <%})%>
+
+
+                            <br><br><br>
+                            <br>
+                </div>
+
+            </center>
+        </form>
 
         <div id="how-it-works" class="l-section wf-section">
             <div class="l-container">
@@ -88,24 +106,6 @@
                 </div>
             </div>
         </div>
-
-        <center>
-            <div class="target" style="background-color: rgb(167, 167, 167, 0.4);">
-                <br>
-                <h2 class="l-header h1 ship">Nearest Dabbawalas</h2>
-                <button id="rzp-button1" class="details_btn"><span>Rhutuja <br><br>
-                        Distance: m
-                    </span></button>
-                <br><br><br>
-
-                <!-- <button id="rzp-button1" class="details_btn"><span>Dabbawala Name <br><br>
-                        Distance: 256m
-                    </span></button> -->
-                <br><br><br>
-
-                <br>
-            </div>
-        </center>
 
         <div id="how-it-works" class="l-section wf-section">
             <div class="l-container">
@@ -147,13 +147,11 @@
         <!-- Razor Pay-->
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
-            document.getElementById('name').textContent = 'Tejashree Tambe';
-            document.getElementById('phone').textContent = '3456789123';
             document.getElementById('pickup').textContent = '34-35 Soujaya Society Vidya Niketan Marg, Lokmanya Tilak Nagar, Goregaon West, Mumbai 400062, India';
 
             var options = {
                 "key": "rzp_test_efrPdinX44khOe", // Enter the Key ID generated from the Dashboard
-                "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "amount": "150000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                 "currency": "INR",
                 "name": "My Dabbawala",
                 "description": "Test Transaction",
@@ -162,10 +160,10 @@
                 //Pass the `id` obtained in the previous step
                 //"account_id": "acc_Ef7ArAsdU5t0XL",
                 "handler": function (response) {
-                    alert("Payment Succesfull!\nYour Dabba will be delivered shortly.\n" + response.razorpay_payment_id);
+                    alert("Payment Succesfull!" + response.razorpay_payment_id + "\nChoose Your Dabbawala.\n");
                     //alert(response.razorpay_order_id);
                     //alert(response.razorpay_signature)
-                    window.open('/user_dashboard', "_self");
+                    // window.open('/user_dashboard', "_self");
                 }
             };
             var rzp1 = new Razorpay(options);
@@ -179,8 +177,8 @@
             var phone = document.getElementById("phone");
             var pickup = document.getElementById("pickup");
             var dropoff = document.getElementById("dropoff");
-            
-            document.getElementById('toggle-button').addEventListener('click', function () {
+
+            document.getElementById('rzp-button1').addEventListener('click', function () {
                 toggle(document.querySelectorAll('.target'));
             });
 

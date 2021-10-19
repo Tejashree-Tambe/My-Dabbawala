@@ -52,7 +52,6 @@ app.use(session({
     resave: false,
     store: store,
     saveUninitialized: false,
-    // cookie: { secure: true }
 }));
 
 app.use(cookieParser());
@@ -123,16 +122,6 @@ app.use(function (req, res, next) {
     // }
     next();
 });
-
-function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}
 
 
 // letting app know to listen to port number 3000

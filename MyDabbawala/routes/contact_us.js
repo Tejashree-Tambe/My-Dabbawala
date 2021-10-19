@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // For Database
-const Otd = require("../models/contact_us");
+const Contactus = require("../models/contact_us");
 
 router.post('/', async (req, res) => {
     try {
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 
         console.log("data saved")
         const contact = await contactus.save();
-        console.log("user registered")
+        console.log("Mail To be sent")
         res.render('homepage', { req: req });
     }
 
