@@ -34,7 +34,7 @@ nearest dabbawalas available. After completing the payment, their delivery packa
 <h2>4. Technologies used: </h2>
 <b>Backend</b>: Node.js </br>
 <b>Framework</b>: Express.js </br>
-<b>Frontend</b>: HTML rendered as ejs </br>
+<b>Frontend</b>: HTML rendered as ejs, CSS and JavaScript </br>
 </br>
 <b>Packages and libraries used</b>:</br>
 cloudinary : To connect to cloud based storage service - Cloudinary for uploading Dabbawala Id card to the database.</br>
